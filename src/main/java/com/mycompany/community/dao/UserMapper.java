@@ -2,9 +2,8 @@ package com.mycompany.community.dao;
 
 import com.mycompany.community.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 
-//操作数据表user的接口
+//操作数据表user的mapper接口
 
 @Mapper
 public interface UserMapper {
@@ -27,7 +26,5 @@ public interface UserMapper {
 
     //更新密码
     int updatePassword(int id, String password);
-
-
 
 }

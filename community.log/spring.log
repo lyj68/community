@@ -1,0 +1,9 @@
+2021-12-16 21:02:36.790  INFO 11364 --- [main] com.mycompany.community.LoggerTests      : Starting LoggerTests using Java 1.8.0_152 on LAPTOP-90ACGMQV with PID 11364 (started by lyj in D:\java_program\community\community)
+2021-12-16 21:02:36.792 DEBUG 11364 --- [main] com.mycompany.community.LoggerTests      : Running with Spring Boot v2.5.6, Spring v5.3.12
+2021-12-16 21:02:36.793  INFO 11364 --- [main] com.mycompany.community.LoggerTests      : No active profile set, falling back to default profiles: default
+2021-12-16 21:02:38.556  INFO 11364 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-12-16 21:02:39.033  INFO 11364 --- [main] com.mycompany.community.LoggerTests      : Started LoggerTests in 2.567 seconds (JVM running for 3.471)
+2021-12-16 21:02:39.273 DEBUG 11364 --- [main] com.mycompany.community.LoggerTests      : debug log
+2021-12-16 21:02:39.274  INFO 11364 --- [main] com.mycompany.community.LoggerTests      : info log
+2021-12-16 21:02:39.274  WARN 11364 --- [main] com.mycompany.community.LoggerTests      : warn log
+2021-12-16 21:02:39.274 ERROR 11364 --- [main] com.mycompany.community.LoggerTests      : error log

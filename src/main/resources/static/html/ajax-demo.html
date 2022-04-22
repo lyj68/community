@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+    <p>
+        <!-- onclick="send()"为触发事件，
+            需要引用jquer写该函数 -->
+        <input type="button" value="发送" onclick="send()">
+    </p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <!-- $.post提交方式:请求从服务器载入数据。
+     一般写入三个参数： 请求发送到哪个url; 规定连同请求发送到服务器的数据； 规定当请求成功时运行的函数。
+     -->
+    <script>
+        function send(){
+            $.post(
+                "/community/alpha/ajax",
+                {"name":"张三","age":23},
+                function(data) {
+                    console.log(typeof(data));
+                    console.log(data);
+                    <!-- 将json字符串解析成所需要的对象 -->
+                    data = $.parseJSON(data);
+                    console.log(typeof(data));
+                    console.log(data.code);
+                    console.log(data.msg);
+                }
+            );
+
+        }
+    </script>
+</body>
+</html>

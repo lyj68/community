@@ -2,7 +2,8 @@ package com.mycompany.community;
 
 import com.mycompany.community.dao.AlphaDao;
 import com.mycompany.community.service.AlphaService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,14 +11,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CommunityApplication.class)
 //要想使用这个容器，必须这个类取实现一个ApplicationContextAware接口
-class CommunityApplicationTests implements ApplicationContextAware {
+public class CommunityApplicationTests implements ApplicationContextAware {
 	//记录一下这个容器
 	private ApplicationContext applicationContext;
 
@@ -78,11 +81,6 @@ class CommunityApplicationTests implements ApplicationContextAware {
 		System.out.println(alphaService);
 		System.out.println(simpleDateFormat);
 	}
-
-
-//	@Test
-//	void contextLoads() {
-//	}
 
 
 
