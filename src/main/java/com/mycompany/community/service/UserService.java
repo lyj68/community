@@ -226,6 +226,7 @@ public class UserService implements CommunityConstant {
         String userKey = RedisKeyUtil.getUserKey(userId);
         redisTemplate.opsForValue().set(userKey,user,3600, TimeUnit.SECONDS);
         return user;
+
     }
 
     // 3.数据变更时清除缓存数据
