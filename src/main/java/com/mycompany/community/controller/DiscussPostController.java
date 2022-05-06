@@ -1,13 +1,8 @@
 package com.mycompany.community.controller;
 
-import com.mycompany.community.entity.Comment;
-import com.mycompany.community.entity.DiscussPost;
-import com.mycompany.community.entity.Page;
-import com.mycompany.community.entity.User;
-import com.mycompany.community.service.CommentService;
-import com.mycompany.community.service.DiscussPostService;
-import com.mycompany.community.service.LikeService;
-import com.mycompany.community.service.UserService;
+import com.mycompany.community.entity.*;
+import com.mycompany.community.event.EventProducer;
+import com.mycompany.community.service.*;
 import com.mycompany.community.util.CommunityConstant;
 import com.mycompany.community.util.CommunityUtil;
 import com.mycompany.community.util.HostHolder;
@@ -38,7 +33,13 @@ public class DiscussPostController implements CommunityConstant {
     private CommentService commentService;
 
     @Autowired
+    private ElasticsearchService elasticsearchService;
+
+    @Autowired
     private LikeService likeService;
+
+    @Autowired
+    private EventProducer eventProducer;
 
     //返回json字符串
     @RequestMapping(path = "/add", method = RequestMethod.POST)
@@ -59,6 +60,15 @@ public class DiscussPostController implements CommunityConstant {
         //调用业务层处理discusspost对象
         discussPostService.addDiscussPost(discussPost);
 
+        // 插入 发布帖子，触发发帖事件
+        // 构建事件
+        Event event = new Event()
+                .setTopic(TOPIC_PUBLISH)
+                .setUserId(user.getId())
+                .setEntityType(ENTITY_TYPE_POST)
+                .setEntityId(discussPost.getId());
+        // 把事件给生产者
+        eventProducer.fireEvent(event);
 
         return CommunityUtil.getJsonString(0,"发布成功!");
 
