@@ -48,7 +48,7 @@ public class MapperTest {
         System.out.println(user);
     }
 
-    @Test
+    //@Test
     public void testInsertUser(){
         User user = new User();
         user.setUsername("test");
@@ -63,7 +63,7 @@ public class MapperTest {
 
     }
 
-    @Test
+    //@Test
     public void updateUser(){
         int rows = userMapper.updateStatus(150,1);
         System.out.println(rows);
@@ -77,9 +77,9 @@ public class MapperTest {
 
     }
 
-    @Test
+    //@Test
     public void testSelectPosts() {
-        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10);
+        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10,0);
         for(DiscussPost post : list) {
             System.out.println(post);
         }
@@ -88,7 +88,7 @@ public class MapperTest {
         System.out.println(rows);
     }
 
-    @Test
+    //@Test
     public void insertloginTicket(){
         LoginTicket ticket = new LoginTicket();
         ticket.setUserId(101);
@@ -98,7 +98,7 @@ public class MapperTest {
         loginTicketMapper.insertLoginTicket(ticket);
     }
 
-    @Test
+    //@Test
     public void selectAndUpdate(){
         LoginTicket loginTicket = loginTicketMapper.selectByTicket("abc");
         System.out.println(loginTicket);
@@ -108,7 +108,7 @@ public class MapperTest {
         System.out.println(loginTicket);
     }
 
-    @Test
+    //@Test
     public void testSelectLetters() {
         List<Message> list = messageMapper.selectConversations(111, 0, 20);
         for (Message message : list) {

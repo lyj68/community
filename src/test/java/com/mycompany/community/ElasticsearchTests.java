@@ -11,7 +11,6 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -48,7 +47,7 @@ public class ElasticsearchTests {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
-    @Test
+    //@Test
     public void testInsert(){
         // 从数据库中去帖子把它给搜索引擎
         // 只能插入一条数据
@@ -59,34 +58,34 @@ public class ElasticsearchTests {
         discussPortRepository.save(discussPostMapper.selectDiscussPostById(245));
     }
 
-    @Test
+    //@Test
     public void testInsertList() {
         // 一次插入多条数据给elasticsearch
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(101,0,100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(102, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(103, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(111, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(112, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(131, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(132, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(133, 0, 100));
-        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(134, 0, 100));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(101,0,100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(102, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(103, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(111, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(112, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(131, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(132, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(133, 0, 100,0));
+        discussPortRepository.saveAll(discussPostMapper.selectDiscussPosts(134, 0, 100,0));
     }
 
-    @Test
+    //@Test
     public void testUpdate() {
         DiscussPost post = discussPostMapper.selectDiscussPostById(231);
         post.setContent("我是新人,使劲灌水.");
         discussPortRepository.save(post);
     }
 
-    @Test
+    //@Test
     public void testDelete() {
         // discussRepository.deleteById(231);
         discussPortRepository.deleteAll();
     }
 
-    @Test
+    //@Test
     public void test1() {
         NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder()
 //查询条件
@@ -104,7 +103,7 @@ public class ElasticsearchTests {
 
 
 
-    @Test
+    //@Test
     public void testSearchByRepository() {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 // 查询内容，并指定在哪部分里面查找
@@ -142,7 +141,7 @@ public class ElasticsearchTests {
 
     }
 
-    @Test
+    //@Test
     public void testSearchByTemplate() {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withQuery(QueryBuilders.multiMatchQuery("爱国", "title", "content"))

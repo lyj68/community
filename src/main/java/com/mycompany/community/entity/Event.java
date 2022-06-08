@@ -6,7 +6,7 @@ import java.util.Map;
 public class Event {
 
     private String topic;
-    // 触发时间的用户
+    // 触发事件的用户
     private int userId;
     private int entityType;
     private int entityId;

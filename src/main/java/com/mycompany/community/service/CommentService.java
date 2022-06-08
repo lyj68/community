@@ -33,7 +33,7 @@ public class CommentService implements CommunityConstant {
     }
 
 
-    // 因为设计增加和更新数据，所以需要事务管理
+    // 因为涉及增加和更新数据，所以需要事务管理
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     public int insertComment(Comment comment){
         if (comment == null) {

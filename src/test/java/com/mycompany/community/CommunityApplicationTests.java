@@ -2,7 +2,6 @@ package com.mycompany.community;
 
 import com.mycompany.community.dao.AlphaDao;
 import com.mycompany.community.service.AlphaService;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class CommunityApplicationTests implements ApplicationContextAware {
 		this.applicationContext = applicationContext;
 	}
 
-	@Test
+	//@Test
 	public void testApplicationContext() {
 
 		System.out.println(applicationContext);
@@ -43,7 +42,7 @@ public class CommunityApplicationTests implements ApplicationContextAware {
 
 	}
 
-	@Test
+	//@Test
 	public void testBeanManagement() {
 		AlphaService alphaService = applicationContext.getBean(AlphaService.class);
 		System.out.println(alphaService);
@@ -52,7 +51,7 @@ public class CommunityApplicationTests implements ApplicationContextAware {
 		System.out.println(alphaService);
 	}
 
-	@Test
+	//@Test
 	public void testBeanConfig() {
 		SimpleDateFormat simpleDateFormat = applicationContext.getBean(SimpleDateFormat.class);
 		System.out.println(simpleDateFormat.format(new Date()));
@@ -75,7 +74,7 @@ public class CommunityApplicationTests implements ApplicationContextAware {
 	@Autowired
 	private  SimpleDateFormat simpleDateFormat;
 
-	@Test
+	//@Test
 	public void testDI(){
 		System.out.println(alphaDao);
 		System.out.println(alphaService);
